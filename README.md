@@ -47,5 +47,5 @@ Para personalizar esta configuración, edita los archivos en:
 ├── lazy.lua         # Configuración de LazyVim
 └── options.lua      # Opciones de Neovim3
 
-📜 Licencia
+## 📜 **Licencia**
 Esta configuración está bajo licencia MIT. ¡Úsala, modifícala y compártela! 🤝
