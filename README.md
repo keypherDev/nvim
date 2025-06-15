@@ -43,10 +43,11 @@ pip install ruff black
 
 ## 🎨 **Personalización** 
 Para personalizar esta configuración, edita los archivos en:
+```bash
 ~/.config/nvim/lua/config/
 ├── keybinds.lua      # Atajos de teclado
 ├── lazy.lua         # Configuración de LazyVim
 └── options.lua      # Opciones de Neovim3
-
+```
 ## 📜 **Licencia**
 Esta configuración está bajo licencia MIT. ¡Úsala, modifícala y compártela! 🤝
