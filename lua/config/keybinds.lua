@@ -21,8 +21,25 @@ vim.keymap.set('v', '<leader>y', '"+y', opts) -- Copiar selección
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- Atajos: Espacio + y (modo visual) | Espacio + p (modo normal)
 
--- EXPLORADOR DE ARCHIVOS (netrw)
--- vim.keymap.set('n', '<leader>e', vim.cmd.Ex, opts) -- Abrir explorador
+-- Alternar entre inicio (0) y final ($) de línea con la misma tecla (ej. <A-l>)
+vim.keymap.set('n', '<A-w>', function()
+  local first_char = vim.fn.col('.') == 1  -- ¿Estás en la columna 1?
+  if first_char then
+    vim.cmd('normal! $')  -- Si ya estás al inicio, ve al final
+  else
+    vim.cmd('normal! 0')  -- Si no, ve al inicio
+  end
+end, { desc = 'Toggle inicio y fin de la linea' })
+
+-- Versión para modo visual (selección)
+vim.keymap.set('v', '<A-w>', function()
+  local first_char = vim.fn.col('.') == 1
+  if first_char then
+    vim.cmd('normal! $') 
+  else
+    vim.cmd('normal! 0') 
+  end
+end, { desc = 'Visual inicio y fin de la linea' })
 
 --MOVER ARRIBA O ABAJO LAS LINEAS
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
