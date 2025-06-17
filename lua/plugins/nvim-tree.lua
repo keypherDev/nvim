@@ -15,11 +15,23 @@ return {
             renderer = {
                 highlight_git = true,
                 icons = {
+                    git_placement = "after",
                     show = {
                         file = true,
                         folder = true,
                         folder_arrow = true,
                         git = true,
+                    },
+                    glyphs ={
+                        git = {
+                            unstaged = "󰺁",
+                            staged = "✓",
+                            unmerged = "",
+                            renamed = "➜",
+                            untracked = "★",
+                            deleted = "",
+                            ignored = "◌",
+                        },
                     },
                 },
             },
