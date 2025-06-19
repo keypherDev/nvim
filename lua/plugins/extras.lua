@@ -5,7 +5,7 @@ return {
         event = "VeryLazy",
         opts = {},
     },
-    -- TODO
+    -- TODO: tienes que hacer tal cosa
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -37,7 +37,7 @@ return {
         },
         config = function(_, opts)
             -- Configuración necesaria para folding
-            vim.o.foldcolumn = '1' -- '0' para ocultar la columna de fold
+            vim.o.foldcolumn = '0' -- '0' para ocultar la columna de fold
             vim.o.foldlevel = 99   -- niveles altos para no plegar por defecto
             vim.o.foldlevelstart = 99
             vim.o.foldenable = true
@@ -71,7 +71,7 @@ return {
 
         keys = {
             {
-                "<leader>ut",
+                "<A-u>",
                 function()
                     vim.cmd("ShowkeysToggle")
                 end,

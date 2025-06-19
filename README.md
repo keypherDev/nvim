@@ -39,6 +39,8 @@ sudo apt update && sudo apt install -y ripgrep fd-find python3-pip nodejs npm
 
 # Formateadores Python (¡No los omitas!)
 pip install ruff black
+# Formateadores Frontend
+npm install -g prettier
 ```
 
 ## 🎨 **Personalización** 

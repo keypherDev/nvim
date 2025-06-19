@@ -9,19 +9,23 @@ vim.keymap.set('n', '<leader>w', function()
     print("Guardando archivo...")
     vim.cmd.w()
     print("¡Guardado!")
-end, opts)
+end, opts, {desc =  "Guardar cambios"})
 -- Atajo: Espacio + w
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "n", "nzzzv", {desc = "buscar proximo y centrar"})
+vim.keymap.set("n", "N", "Nzzzv",{desc = "buscar anterior y centrar"})
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Media página abajo + centrar" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Media página arriba + centrar" })
 
 --COPIAR/PEGAR AL PORTAPAPELES DEL SISTEMA
-vim.keymap.set('v', '<leader>y', '"+y', opts) -- Copiar selección
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set('v', '<leader>y', '"+y', opts, {desc = "Copiar al portapapeles"}) -- Copiar selección
+vim.keymap.set("x", "<leader>p", [["_dP]], {desc = "Pegar "})
 -- Atajos: Espacio + y (modo visual) | Espacio + p (modo normal)
 
--- Alternar entre inicio (0) y final ($) de línea con la misma tecla (ej. <A-l>)
+-- CRTL + x PARA CORTAR
+vim.keymap.set("n", "<C-x>", "dd", opts,{desc = "Cortar"} )
+-- SELECCIONAR TODO
+vim.keymap.set("n", "<A-a>", "ggVG", opts) -- Alternar entre inicio (0) y final ($) de línea con la misma tecla (ej. <A-l>)
+-- IR AL INICIO O FIN DE LA LINEA DINAMICAMENTE
 vim.keymap.set('n', '<A-w>', function()
     local first_char = vim.fn.col('.') == 1 -- ¿Estás en la columna 1?
     if first_char then
@@ -44,7 +48,8 @@ end, { desc = 'Visual inicio y fin de la linea' })
 --MOVER ARRIBA O ABAJO LAS LINEAS
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
+--KEY PARA ESC 
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("i", "jj", "<ESC>", { noremap = false })
 vim.keymap.set("i", "jk", "<ESC>", { noremap = false })

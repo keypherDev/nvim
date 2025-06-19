@@ -18,6 +18,23 @@ return {
             lua = { "stylua", lsp_format = "fallback" },
             python = { "ruff", "black" },
             go = { "goimports", "gofmt" },
+             -- Web technologies
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            javascriptreact = { "prettier" },
+            typescriptreact = { "prettier" },
+            json = { "prettier" },
+            jsonc = { "prettier" },
+            yaml = { "prettier" },
+            markdown = { "prettier" },
+            html = { "prettier" },
+            css = { "prettier" },
+            scss = { "prettier" },
+             -- PHP/Laravel
+            php = { "pint" },
+            -- Shell
+            sh = { "shfmt" },
+            bash = { "shfmt" },
         },
     },
     default_format_opts = {
