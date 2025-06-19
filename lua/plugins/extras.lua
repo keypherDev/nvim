@@ -1,4 +1,8 @@
 return {
+    -- Identacion php embed HTML 
+    {
+        "captbaritone/better-indent-support-for-php-with-html",
+    },
     -- Marks
     {
         "chentoast/marks.nvim",
