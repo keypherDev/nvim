@@ -87,3 +87,5 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 --plugin undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {desc = "toogle undotree"})
+--OIL explorer
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Abrir Explorador" })
