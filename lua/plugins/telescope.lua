@@ -36,17 +36,19 @@ return {
         require("telescope").setup({
             defaults = {
                 file_ignore_patterns = { "node_modules", "%.git/" },
-                prompt_prefix = "🔍 ",
-                selection_caret = "➤ ",
+                -- prompt_prefix = "🔍 ",
+                -- selection_caret = "➤ ",
                 sorting_strategy = "descending",
                 layout_config = {
                     horizontal = { preview_width = 0.6 },
                 },
+                color_devicons = true,
             },
             pickers = {
                 find_files = { theme = "dropdown", hidden = true },
                 oldfiles = { only_cwd = true },
             },
+
         })
     end,
 }
