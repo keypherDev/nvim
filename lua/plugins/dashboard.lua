@@ -30,7 +30,10 @@ return {
             dashboard.button("f", "  Buscar archivo", ":Telescope find_files<CR>"),
             dashboard.button("r", "  Archivos recientes", ":Telescope oldfiles<CR>"),
             dashboard.button("n", "  Nuevo archivo", ":ene <BAR> startinsert<CR>"),
-            dashboard.button("c", "  Configuración", ":e $MYVIMRC<CR>"),
+            dashboard.button("c", "  Configuración", function()
+                vim.cmd("cd ~/.config/nvim")
+                vim.cmd(":e init.lua")
+            end),
             dashboard.button("q", "  Salir", ":qa<CR>"),
         }
 
