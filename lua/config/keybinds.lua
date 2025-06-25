@@ -5,8 +5,35 @@ vim.g.loaded_netrwPlugin = 1
 local opts = { noremap = true, silent = true } -- Evita recursividad y mensajes no deseados SALIR DE TODO
 --CERRAR TODO
 vim.keymap.set("n", "<leader>e", function()
-    vim.cmd("qa")
+    local function show_error()
+        vim.notify("⚠️ No se puede salir. Hay cambios sin guardar en los buffers:\n" ..
+            "• Usa ':wa' para guardar todo y luego ':qa'\n" ..
+            "• Usa ':qa!' para descartar todos los cambios",
+            vim.log.levels.ERROR, {
+                title = "Acción requerida",
+                timeout = 5000,
+                icon = "",
+                on_open = function(win)
+                    local buf = vim.api.nvim_win_get_buf(win)
+                    vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
+                end,
+            })
+    end
+
+    -- Intenta salir silenciosamente para validar
+    local success, err = pcall(vim.cmd, "qa")
+
+    if not success then
+        -- Analiza el mensaje de error para determinar la causa
+        if string.find(err, "E37") then -- Código de error para buffers no guardados
+            show_error()
+        else
+            -- Para otros tipos de errores
+            vim.notify("❌ Error al intentar salir: " .. err, vim.log.levels.ERROR)
+        end
+    end
 end, opts, { desc = "Salir de nvim" })
+
 
 --GUARDAR ARCHIVO RÁPIDO
 vim.keymap.set('n', '<leader>w', function()
@@ -23,7 +50,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Media página arriba + centrar
 --COPIAR/PEGAR AL PORTAPAPELES DEL SISTEMA
 vim.keymap.set('v', '<leader>y', '"+y', opts, { desc = "Copiar al portapapeles" }) -- Copiar selección
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Pegar sobre texto sin afectar registros" })
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], {desc = "Eliminar lineas sin afectar lo copiado "})
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Eliminar lineas sin afectar lo copiado " })
 -- CRTL + x PARA CORTAR
 vim.keymap.set("n", "<C-x>", "dd", opts, { desc = "Cortar" })
 -- SELECCIONAR TODO
@@ -79,13 +106,13 @@ end, { desc = "Source solo archivos compatibles" })
 --REEMPLAZO INTELIGENTE
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- UNE LA LINEA SIGUIENTE A LA ANTERIOR
-vim.keymap.set("n", "J", "mzJz", {desc = "Unir la currentLine con la sgte"})
+vim.keymap.set("n", "J", "mzJz", { desc = "Unir la currentLine con la sgte" })
 -- IDENTACION SIMPLE
-vim.keymap.set("n", "=ap", "ma=ap'a", {desc ="Identacion simple"})
+vim.keymap.set("n", "=ap", "ma=ap'a", { desc = "Identacion simple" })
 --INDENTACION MEJORADA
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 --plugin undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {desc = "toogle undotree"})
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toogle undotree" })
 --OIL explorer
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Abrir Explorador" })

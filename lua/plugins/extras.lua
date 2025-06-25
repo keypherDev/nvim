@@ -70,7 +70,7 @@ return {
             timeout = 1,
             maxkeys = 6,
             -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
-            position = "top-right",
+            position = "bottom-right",
         },
 
         keys = {
