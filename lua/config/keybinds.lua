@@ -104,7 +104,7 @@ vim.keymap.set("n", "<leader><leader>", function()
     end
 end, { desc = "Source solo archivos compatibles" })
 --REEMPLAZO INTELIGENTE
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc="Reemplazo inteligente"})
 -- UNE LA LINEA SIGUIENTE A LA ANTERIOR
 vim.keymap.set("n", "J", "mzJz", { desc = "Unir la currentLine con la sgte" })
 -- IDENTACION SIMPLE
